@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>Hệ thống luyện kiểm tra</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">✓</div>
+        <div>
+          <h1>Ôn thi</h1>
+          <span>Quản lý bài kiểm tra</span>
+        </div>
+      </div>
+
+      <nav id="sideNav" class="side-nav"></nav>
+
+      <div class="sidebar-bottom">
+        <button class="ghost-btn" id="exportBtn">↓ Sao lưu dữ liệu</button>
+        <label class="ghost-btn file-btn">
+          ↑ Nhập dữ liệu
+          <input type="file" id="importInput" accept="application/json" hidden />
+        </label>
+        <button class="danger-ghost" id="resetBtn">↺ Khôi phục dữ liệu gốc</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Mở menu">☰</button>
+        <div class="breadcrumbs" id="breadcrumbs">Trang chủ</div>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="homeBtn" title="Trang chủ">⌂</button>
+        </div>
+      </header>
+
+      <section class="hero" id="hero">
+        <div>
+          <div class="eyebrow">PERSONAL STUDY HUB</div>
+          <h2>Hệ thống luyện kiểm tra</h2>
+          <p>Phân loại bài theo chủ đề, mở bài nhanh và lưu dữ liệu ngay trên trình duyệt.</p>
+        </div>
+        <div class="hero-stat">
+          <strong id="totalCount">0</strong>
+          <span>bài đã lưu</span>
+        </div>
+      </section>
+
+      <div class="search-wrap" id="searchWrap">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Tìm bài kiểm tra, chủ đề..." autocomplete="off" />
+        <button id="clearSearch" class="clear-search" hidden>×</button>
+      </div>
+
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div>
+          <div class="eyebrow">QUẢN LÝ BÀI</div>
+          <h3 id="modalTitle">Thêm bài kiểm tra</h3>
+        </div>
+        <button class="icon-btn" id="closeModal">×</button>
+      </div>
+      <form id="examForm">
+        <input type="hidden" id="editId" />
+        <input type="hidden" id="formCategory" />
+        <input type="hidden" id="formLevel" />
+        <div class="form-group">
+          <label for="examName">Tên bài kiểm tra</label>
+          <input id="examName" required maxlength="200" placeholder="Ví dụ: Nhà nước - Cơ bản - Bài 01" />
+        </div>
+        <div class="form-group">
+          <label for="examUrl">Link bài kiểm tra</label>
+          <input id="examUrl" type="url" required placeholder="https://..." />
+        </div>
+        <div class="form-group">
+          <label for="examDate">Ngày</label>
+          <input id="examDate" type="date" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="cancelModal">Hủy</button>
+          <button type="submit" class="primary-btn">Lưu bài</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="confirmBackdrop" hidden>
+    <div class="modal small-modal">
+      <div class="confirm-icon">!</div>
+      <h3 id="confirmTitle">Xóa bài?</h3>
+      <p id="confirmText">Bài sẽ bị xóa khỏi trình duyệt của bạn.</p>
+      <div class="modal-actions">
+        <button class="secondary-btn" id="confirmCancel">Hủy</button>
+        <button class="danger-btn" id="confirmOk">Xóa</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
